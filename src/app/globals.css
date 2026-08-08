@@ -3,27 +3,27 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --background: #fdf6f8;
+  --background: #f6f6f8;
   --surface: #ffffff;
-  --surface-hover: #fdf8fa;
-  --border-subtle: #f1e3e9;
-  --foreground: #201720;
-  --muted: #8a707d;
-  --accent: #d98ba3;
-  --accent-soft: #f6e3e9;
-  --ring: #d98ba3;
+  --surface-hover: #fafafa;
+  --border-subtle: #e8e8ec;
+  --foreground: #17171c;
+  --muted: #6b6b76;
+  --accent: #6659e8;
+  --accent-soft: #efecfd;
+  --ring: #6659e8;
 }
 
 .dark {
-  --background: #16111a;
-  --surface: #1f1720;
-  --surface-hover: #271d28;
-  --border-subtle: #332631;
-  --foreground: #f6eef2;
-  --muted: #a9909f;
-  --accent: #e2a3b6;
-  --accent-soft: rgba(226, 163, 182, 0.14);
-  --ring: #e2a3b6;
+  --background: #0d0d12;
+  --surface: #16161d;
+  --surface-hover: #1c1c25;
+  --border-subtle: #26262f;
+  --foreground: #f1f1f4;
+  --muted: #9797a3;
+  --accent: #8b7cf6;
+  --accent-soft: rgba(139, 124, 246, 0.14);
+  --ring: #8b7cf6;
 }
 
 @theme inline {
