@@ -9,9 +9,9 @@
   --border-subtle: #f1e3e9;
   --foreground: #201720;
   --muted: #8a707d;
-  --accent: #e0568f;
-  --accent-soft: #fce4ef;
-  --ring: #e0568f;
+  --accent: #d98ba3;
+  --accent-soft: #f6e3e9;
+  --ring: #d98ba3;
 }
 
 .dark {
@@ -21,9 +21,9 @@
   --border-subtle: #332631;
   --foreground: #f6eef2;
   --muted: #a9909f;
-  --accent: #f472b6;
-  --accent-soft: rgba(244, 114, 182, 0.14);
-  --ring: #f472b6;
+  --accent: #e2a3b6;
+  --accent-soft: rgba(226, 163, 182, 0.14);
+  --ring: #e2a3b6;
 }
 
 @theme inline {
