@@ -30,7 +30,7 @@ export default async function DashboardPage() {
     <div className="mx-auto max-w-6xl space-y-6">
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-semibold tracking-tight">Bonjour {firstName} 👋</h1>
+          <h1 className="text-2xl font-semibold tracking-tight">Bonjour {firstName}</h1>
           <p className="mt-1 text-sm text-[var(--muted)]">
             {hasApplications
               ? `Tu as ${data.enCours} candidature${data.enCours > 1 ? "s" : ""} en cours sur ${data.total} au total.`
