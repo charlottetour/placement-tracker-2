@@ -1,0 +1,106 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Company {
+  id        String   @id @default(cuid())
+  name      String
+  sector    String?
+  city      String?
+  country   String?
+  website   String?
+  notes     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  contacts     Contact[]
+  applications Application[]
+}
+
+model Contact {
+  id          String    @id @default(cuid())
+  companyId   String
+  firstName   String
+  lastName    String?
+  role        String?
+  email       String?
+  linkedin    String?
+  phone       String?
+  type        String    @default("AUTRE")
+  notes       String?
+  lastContactedAt DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  company Company @relation(fields: [companyId], references: [id], onDelete: Cascade)
+}
+
+model Application {
+  id              String    @id @default(cuid())
+  companyId       String
+  title           String
+  applicationType String    @default("AUTRE")
+  link            String?
+  status          String    @default("A_RECHERCHER")
+  priority        Int       @default(0)
+  tags            String?
+  notes           String?
+  order           Int       @default(0)
+  discoveredAt    DateTime?
+  deadlineAt      DateTime?
+  sentAt          DateTime?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  company      Company        @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  documents    DocumentItem[]
+  followUps    FollowUp[]
+  interactions Interaction[]
+
+  @@index([status])
+  @@index([companyId])
+}
+
+model DocumentItem {
+  id            String   @id @default(cuid())
+  applicationId String
+  label         String
+  checked       Boolean  @default(false)
+  link          String?
+  order         Int      @default(0)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  application Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+}
+
+model FollowUp {
+  id            String    @id @default(cuid())
+  applicationId String
+  dueAt         DateTime
+  done          Boolean   @default(false)
+  note          String?
+  createdAt     DateTime  @default(now())
+
+  application Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+
+  @@index([dueAt])
+}
+
+model Interaction {
+  id            String   @id @default(cuid())
+  applicationId String
+  type          String   @default("NOTE")
+  content       String
+  occurredAt    DateTime @default(now())
+  createdAt     DateTime @default(now())
+
+  application Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+
+  @@index([applicationId])
+}
